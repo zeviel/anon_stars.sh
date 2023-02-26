@@ -19,9 +19,9 @@ function login() {
 			"password": "'$2'",
 			"returnSecureToken": "true"
 		}')
-	if [ -n $(jq -r ".idToken" <<<"$response") ]; then
-		user_id=$(jq -r ".localId" <<<"$response")
-		id_token=$(jq -r ".idToken" <<<"$response")
+	if [ -n $(jq -r ".idToken" <<< "$response") ]; then
+		user_id=$(jq -r ".localId" <<< "$response")
+		id_token=$(jq -r ".idToken" <<< "$response")
 	fi
 	echo $response
 	get_auth_token $1 $2
@@ -79,8 +79,8 @@ function get_auth_token() {
 		--header "accept: application/json" \
 		--header "content-type: application/json" \
 		--header "x-unity-version: 2021.3.16f1")
-	if [ $(jq -r ".code" <<<"$response") == "200" ]; then
-		auth_token=$(jq -r ".message" <<<"$response")
+	if [ $(jq -r ".code" <<< "$response") == "200" ]; then
+		auth_token=$(jq -r ".message" <<< "$response")
 	fi
 }
 
