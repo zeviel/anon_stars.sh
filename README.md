@@ -3,6 +3,6 @@ Mobile-API for [Anon Stars](https://play.google.com/store/apps/details?id=ml.ban
 
 ## Example
 ```bash
-source anon_stars.sh
+source ./anon_stars.sh
 login "email" "password"
 ```
